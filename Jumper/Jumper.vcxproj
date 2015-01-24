@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="base_npc.cpp" />
+    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="entity_manager.cpp" />
+    <ClCompile Include="game_over.cpp" />
+    <ClCompile Include="lives.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_game.cpp" />
+    <ClCompile Include="main_guy.cpp" />
+    <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="map.cpp" />
+    <ClCompile Include="score.cpp" />
+    <ClCompile Include="speech.cpp" />
+    <ClCompile Include="win_screen.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="base_npc.h" />
+    <ClInclude Include="bullet.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="entity_manager.h" />
+    <ClInclude Include="game_over.h" />
+    <ClInclude Include="game_state.h" />
+    <ClInclude Include="lives.h" />
+    <ClInclude Include="main_game.h" />
+    <ClInclude Include="main_guy.h" />
+    <ClInclude Include="main_menu.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="mob1.h" />
+    <ClInclude Include="mob2.h" />
+    <ClInclude Include="npc1.h" />
+    <ClInclude Include="npc2.h" />
+    <ClInclude Include="player_bullet.h" />
+    <ClInclude Include="SaveSystem.h" />
+    <ClInclude Include="score.h" />
+    <ClInclude Include="speech.h" />
+    <ClInclude Include="win_screen.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D85A28FD-996B-4405-A967-6AECEA6D10AD}</ProjectGuid>
+    <RootNamespace>Jumper</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>../3rdPartyLibs/include;$(IncludePath)</IncludePath>
+    <LibraryPath>../3rdPartyLibs/lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
