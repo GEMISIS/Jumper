@@ -1,5 +1,7 @@
 #include "entity.h"
 
+sf::Vector2f Entity::scroll(0, 0);
+
 Entity::Entity()
 {
 	this->texture = new sf::Texture();

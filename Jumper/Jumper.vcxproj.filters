@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{95c42ebb-702b-4542-a939-801000a2ce19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities\NPC">
+      <UniqueIdentifier>{d41e7148-6e9d-460b-8b50-32139fff1195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Mob">
+      <UniqueIdentifier>{116cb440-67cd-4fca-9ebe-14d5bb3cd768}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,18 +128,6 @@
     <ClInclude Include="main_guy.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="mob1.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="mob2.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="npc1.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="npc2.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="player_bullet.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -142,6 +136,18 @@
     </ClInclude>
     <ClInclude Include="speech.h">
       <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="npc1.h">
+      <Filter>Header Files\Entities\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="npc2.h">
+      <Filter>Header Files\Entities\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="mob1.h">
+      <Filter>Header Files\Entities\Mob</Filter>
+    </ClInclude>
+    <ClInclude Include="mob2.h">
+      <Filter>Header Files\Entities\Mob</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

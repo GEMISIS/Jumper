@@ -12,12 +12,18 @@
 Map::Map(EntityManager* entityManager)
 {
 	this->texture = new sf::Texture();
+	this->backgroundTexture = new sf::Texture();
 	this->tileSetTexture = new sf::Image();
 	this->entityManager = entityManager;
+	this->tiles = new sf::Sprite();
+	this->background = new sf::Sprite();
 }
 
-void Map::Load(std::string filename, Speech* speech)
+void Map::Load(std::string filename, std::string backgroundFile, Speech* speech)
 {
+	this->backgroundTexture->loadFromFile(backgroundFile);
+	this->background->setTexture(*this->backgroundTexture);
+
 	std::string temp;
 	std::ifstream mapFile("Graphics/maps/" + filename);
 
@@ -89,38 +95,58 @@ void Map::Load(std::string filename, Speech* speech)
 				this->texture->update(tile5, x * 64, y * 64);
 				break;
 			case 6:
-				this->texture->update(tile1, x * 64, y * 64);
-				this->entityManager->Add("npc1", new Npc1(speech, this, x * 64, y * 64));
-				this->data[x + y * this->width] = 1;
+				this->entityManager->Add("npc1", new Npc1(speech, this, x * 64, y * 64 + 32));
+				this->data[x + y * this->width] = 0;
 				break;
 			case 7:
-				this->texture->update(tile1, x * 64, y * 64);
-				this->entityManager->Add("npc2", new Npc2(speech, this, x * 64, y * 64));
-				this->data[x + y * this->width] = 1;
+				this->entityManager->Add("npc2", new Npc2(speech, this, x * 64, y * 64 + 32));
+				this->data[x + y * this->width] = 0;
 				break;
 			case 8:
-				this->texture->update(tile1, x * 64, y * 64);
-				this->entityManager->Add("mob1", new Mob1(this, x * 64, y * 64));
-				this->data[x + y * this->width] = 1;
+				this->entityManager->Add("mob1", new Mob1(this, x * 64, y * 64 + 32));
+				this->data[x + y * this->width] = 0;
 				break;
 			case 9:
-				this->texture->update(tile1, x * 64, y * 64);
-				this->entityManager->Add("mob2", new Mob2(this, x * 64, y * 64));
-				this->data[x + y * this->width] = 1;
+				this->entityManager->Add("mob2", new Mob2(this, x * 64, y * 64 + 32));
+				this->data[x + y * this->width] = 0;
 				break;
 			}
 		}
 	}
 
-	this->setTexture(*this->texture);
+	this->tiles->setTexture(*this->texture);
 }
+
+sf::FloatRect Map::getGlobalBounds()
+{
+	return this->tiles->getGlobalBounds();
+}
+
+void Map::move(float x, float y)
+{
+	this->tiles->move(x, y);
+	this->background->move(x * 0.5f, y * 0.5f);
+}
+
+void Map::move(sf::Vector2f amount)
+{
+	this->move(amount.x, amount.y);
+}
+
 
 void Map::Update(sf::RenderWindow* window)
 {
 }
 
+void Map::Render(sf::RenderWindow* window)
+{
+	window->draw(*this->background);
+	window->draw(*this->tiles);
+}
+
 int Map::CheckCollision(Entity* entity, Direction direction)
 {
+	entity->move(Entity::scroll);
 	int x = (int)(entity->getPosition().x + entity->getGlobalBounds().width / 2) / this->tileWidth;
 	int y = (int)(entity->getPosition().y + entity->getGlobalBounds().height / 2) / this->tileHeight;
 	switch (direction)
@@ -158,6 +184,7 @@ int Map::CheckCollision(Entity* entity, Direction direction)
 		y = (int)(entity->getPosition().y + entity->getGlobalBounds().height) / this->tileHeight;
 		break;
 	}
+	entity->move(-Entity::scroll);
 	return this->data[x + y * this->width];
 }
 
@@ -167,4 +194,6 @@ Map::~Map()
 	delete this->texture;
 	delete this->tileSetTexture;
 	delete this->data;
+	delete this->tiles;
+	delete this->background;
 }

@@ -19,16 +19,23 @@ typedef enum
 	BOTTOM_RIGHT = 7
 }Direction;
 
-class Map : public sf::Sprite
+class Map
 {
 public:
 	Map(EntityManager* entityManager);
 
-	void Load(std::string filename, Speech* speech);
+	void Load(std::string filename, std::string backgroundFile, Speech* speech);
 
 	virtual void Update(sf::RenderWindow* window);
 
 	int CheckCollision(Entity* entity, Direction direction);
+
+	void Render(sf::RenderWindow* window);
+
+	void move(float x, float y);
+	void move(sf::Vector2f amount);
+
+	sf::FloatRect getGlobalBounds();
 
 	std::string topArea, bottomArea, leftArea, rightArea;
 
@@ -42,7 +49,10 @@ protected:
 	int* data;
 private:
 	sf::Texture* texture;
+	sf::Texture* backgroundTexture;
 	sf::Image* tileSetTexture;
 	EntityManager* entityManager;
+	sf::Sprite* tiles;
+	sf::Sprite* background;
 };
 

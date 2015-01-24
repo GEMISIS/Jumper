@@ -8,7 +8,7 @@ extern SaveSystem saveSystem;
 class main_guy : public Entity
 {
 public:
-	main_guy(EntityManager* entityManager, Map* map, float x, float y);
+	main_guy(sf::RenderWindow* window, EntityManager* entityManager, Map* map, float x, float y);
 	bool Update(sf::RenderWindow* window);
 	void Collision(Entity* entity);
 private:
@@ -16,6 +16,7 @@ private:
 	float speed;
 	EntityManager* entityManager;
 	bool spaceKey, xKey;
+	int jump, run;
 	float direction;
 };
 

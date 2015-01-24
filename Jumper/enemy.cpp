@@ -3,6 +3,7 @@
 
 enemy::enemy(Map* map, float x, float y)
 {
+	this->position = sf::Vector2f(x, y);
 	this->Load("ship.png");
 	this->setPosition(x, y);
 	this->setColor(sf::Color::Red);
@@ -13,6 +14,7 @@ enemy::enemy(Map* map, float x, float y)
 
 bool enemy::Update(sf::RenderWindow* window)
 {
+	this->setPosition(this->position.x - Entity::scroll.x, this->position.y - Entity::scroll.y);
 	if (this->health <= 0)
 	{
 		this->Destroy();

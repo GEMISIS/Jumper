@@ -12,5 +12,7 @@ public:
 protected:
 	Map* map;
 	int health;
+private:
+	sf::Vector2f position;
 };
 

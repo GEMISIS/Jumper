@@ -7,6 +7,7 @@ class Entity : public sf::Sprite
 {
 public:
 	sf::Vector2f velocity;
+	static sf::Vector2f scroll;
 
 	Entity();
 

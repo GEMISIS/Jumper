@@ -10,7 +10,7 @@ void main_menu::Initialize(sf::RenderWindow* window)
 	this->font = new sf::Font();
 	this->font->loadFromFile("Graphics/font.ttf");
 
-	this->title = new sf::Text("Role Call", *this->font, 200U);
+	this->title = new sf::Text("Jumper", *this->font, 200U);
 	this->title->setOrigin(this->title->getGlobalBounds().width / 2, this->title->getGlobalBounds().height / 2);
 	this->title->setPosition(window->getSize().x / 2, window->getSize().y / 8);
 
@@ -63,10 +63,10 @@ void main_menu::Render(sf::RenderWindow* window)
 	switch (this->selected)
 	{
 	case 0:
-		this->play->setColor(sf::Color::Blue);
+		this->play->setColor(sf::Color::Cyan);
 		break;
 	case 1:
-		this->quit->setColor(sf::Color::Blue);
+		this->quit->setColor(sf::Color::Cyan);
 		break;
 	}
 	window->draw(*this->title);

@@ -8,7 +8,7 @@ bool quitGame = false;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1280, 768), "Role Call");
+	sf::RenderWindow window(sf::VideoMode(1280, 768), "Jumper");
 
 	coreState.SetWindow(&window);
 	coreState.SetState(new main_menu());

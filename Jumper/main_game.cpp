@@ -28,9 +28,9 @@ void main_game::Initialize(sf::RenderWindow* window)
 	manager = new EntityManager();
 
 	map = new Map(manager);
-	map->Load(saveSystem.currentMap, this->speech);
+	map->Load(saveSystem.currentMap, "Graphics/bg.png", this->speech);
 
-	this->manager->Add("main_guy", new main_guy(manager, map, saveSystem.x, saveSystem.y));
+	this->manager->Add("main_guy", new main_guy(window, manager, map, saveSystem.x, saveSystem.y));
 }
 void main_game::Update(sf::RenderWindow* window)
 {
@@ -42,6 +42,9 @@ void main_game::Update(sf::RenderWindow* window)
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 		{
+			saveSystem.x = this->manager->Get("main_guy")->getPosition().x + Entity::scroll.x;
+			saveSystem.y = this->manager->Get("main_guy")->getPosition().y + Entity::scroll.y;
+			saveSystem.Save();
 			coreState.SetState(new main_menu());
 			return;
 		}
@@ -76,7 +79,7 @@ void main_game::Update(sf::RenderWindow* window)
 }
 void main_game::Render(sf::RenderWindow* window)
 {
-	window->draw(*map);
+	map->Render(window);
 	this->manager->Render(window);
 	window->draw(*this->score);
 	window->draw(*this->lives);

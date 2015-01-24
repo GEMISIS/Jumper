@@ -13,6 +13,7 @@ protected:
 	std::string text;
 	Map* map;
 private:
+	sf::Vector2f position;
 	Speech* speech;
 };
 
